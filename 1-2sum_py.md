@@ -59,3 +59,16 @@ class Solution:
 >Memory Usage: 14.3 MB, less than 5.83% of Python3 online submissions for Two Sum.
 
 为啥，我感觉我这明显简短了很多，one pass不说，还省下了新建list的时间，为什么1ms都没减少？？？
+
+```python
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        numsDic = {}
+        for i,value in enumerate(nums):
+            if value in numsDic:
+                return [numsDic.get(value), i]
+            else:
+                numsDic[target - value] = i
+        return None
+```
+学别人做了个逆向思维的改动，不过感觉可读性变差了，这样的技巧没什么意思啊
