@@ -86,4 +86,6 @@ Runtime: 56 ms, faster than 100.00% of Python3 online submissions for Median of 
 Memory Usage: 13.5 MB, less than 5.11% of Python3 online submissions for Median of Two Sorted Arrays.
 
 基本是抄的代码，也没什么可说的，空间复杂度我也不管了。  
+
+反思：  
 二分法想到了，但是没想到是这样用，我先想的是i和j一起二分，但是就凑不到i + j = (m + n + 1) // 2 了，这里i二分搜索，j随着i变化是正解。
