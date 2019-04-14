@@ -38,3 +38,29 @@ class Solution:
             
         return result
 ```
+
+Runtime: 72 ms, faster than 93.95% of Python3 online submissions for ZigZag Conversion.
+Memory Usage: 13.3 MB, less than 10.35% of Python3 online submissions for ZigZag Conversion.
+
+本来都不想贴上来了，但是还是贴一下吧，毕竟有几个平时很少用但是又很实用的python语句。
+
+>rows = [[] for i in range(numRows)]  
+
+当然还有
+
+>rows = [[0]*numCol for i in range(numRows)] 
+
+python初始化二维数组（list）的方法，真的要用数组直接用numpy不就行了么。
+
+>curRow += 1 if goingDown else -1
+
+python的三目倒是看起来很自然语言
+
+```python
+result = ''
+        for row in rows:
+            a = ''.join(row)
+            result += a
+```
+
+list转string和string的直接加减，也没什么可说的
