@@ -64,3 +64,6 @@ Runtime: 2728 ms, faster than 37.32% of Python3 online submissions for Longest P
 Memory Usage: 13.2 MB, less than 25.10% of Python3 online submissions for Longest Palindromic Substring.
 
 自己写的粗糙的算法，好歹不是暴力算法，满意了。
+
+看了一下教程，我这个叫中心扩展法，还有直接往每个字符之间填入'#'把所有even都转换成odd的算法，想了想，也就是代码好写，不一定快，还要写个变回来的，麻烦。
+
