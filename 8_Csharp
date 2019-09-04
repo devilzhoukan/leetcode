@@ -1,0 +1,54 @@
+public class Solution {
+    public int MyAtoi(string str) {
+        str = str.Trim(); 
+        // To deal with " "
+        if (str.Length == 0)
+        {
+            return 0;
+        }
+        int result = 0;
+        bool isNegative = false;
+        int startPoint = 0;
+         
+        // Delete the left space
+        if (str[0] == '-')
+        {
+            isNegative = true;
+            startPoint = 1;
+        }
+        
+        if (str[0] == '+')
+        {
+            startPoint = 1;
+        }
+        
+        for (int i = startPoint; i < str.Length; i++)
+        {
+            char tmp = str[i];
+            if ((tmp >= '0') && (tmp <= '9'))
+            {
+                if (!isNegative)
+                {
+                    if ((result > int.MaxValue / 10) || ((result == int.MaxValue / 10) && (tmp > '7')))
+                    {
+                        return int.MaxValue;
+                    }
+                }
+                else
+                {
+                    if ((result > int.MaxValue / 10) || ((result == int.MaxValue / 10) && (tmp > '8')))
+                    {
+                        return int.MinValue;
+                    }
+                }
+                result = result * 10 + (tmp - '0');
+            }
+            else
+            {
+                break;
+            }
+        }
+        // for end
+        return isNegative ? (-1 * result) : result;
+    }
+}
