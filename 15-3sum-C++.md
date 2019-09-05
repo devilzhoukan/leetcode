@@ -98,14 +98,13 @@ public:
 ```
 
 First one takes 140ms but second one takes 88ms, why?
+
+### vector push
+Use v.push_back({..., ..., ...}) is much faster.
+
 ### if VS while
 In the first solution, it uses if(sum>0) in while(l<r) loop, that's natural. 
 However, when it's not a solution, it will jump off the while loop and judge again.
 Use while, you can just 'push' it to the approximate range and go on.
 
-it will make 140ms -> 108 ms
-
-### vector push
-Use v.push_back({..., ..., ...}) is much faster.
-
-it will make 108ms -> 88ms
+but I noticed that many fast anwers don't use while, but in my case it really becomes faster.
