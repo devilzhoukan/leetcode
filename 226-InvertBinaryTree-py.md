@@ -20,3 +20,10 @@ class Solution:
             self.invertTree(root.right)
             return root
 ```
+
+It turns out:  
+Runtime: 32 ms, faster than 92.88% of Python3 online submissions for Invert Binary Tree.  
+Memory Usage: 13.7 MB, less than 5.41% of Python3 online submissions for Invert Binary Tree.  
+
+The recursive way costs too much memory?
+But it's Ok, I don't want to think about it
