@@ -67,3 +67,69 @@ Memory Usage: 13.2 MB, less than 25.10% of Python3 online submissions for Longes
 
 看了一下教程，我这个叫中心扩展法，还有直接往每个字符之间填入'#'把所有even都转换成odd的算法，想了想，也就是代码好写，不一定快，还要写个变回来的，麻烦。
 
+--------------------------
+Recently I am practicing dp, and I find that Longest Palindromic Substring is a hot problem that can also be solved by dp.
+
+Let's try it.
+
+```cpp
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        if (s.size() == 0) return s;
+        string ans;
+        
+        int N = s.size();
+        vector< vector<bool> > dp (N, vector<bool> (N));
+        
+        for (int i = N - 1; i >= 0; --i) {
+            for (int j = i; j < N; ++j) {
+                if (i == j || (s[i] == s[j] && (j - i < 2 || dp[i+1][j-1]))) {
+                    dp[i][j] = true;
+                    if (ans.size() < j - i + 1) {
+                        ans = s.substr(i, j - i + 1);
+                    }
+                }
+                else dp[i][j] = false;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+**DETAIL** here: during our traversal, i <= j. Since dp[i][j] relies on dp[i+1][j-1]. The trick here is to reverse the traversal. Let i start from N-1 to 0;
+
+-------------------------
+And of course, there is a recursion way.
+(I just copy haoel's here)
+
+```cpp
+class Solution {
+public:
+    void findPalindrome(string s, int left, int right, int& start, int& len) {
+        int N = s.size();
+        while (left >= 0 && right < N && s[left] == s[right]) {
+            left--;
+            right++;
+        }
+        if (right - left - 1 > len) {
+            len = right - left - 1;
+            start = left + 1;
+        }
+    }
+    string longestPalindrome(string s) {
+        int N = s.size();
+        if (N <= 1) return s;
+        int start = 0;
+        int len = 0;
+        for (int i = 0; i < N - 1; i++) {
+            findPalindrome(s, i, i, start, len);
+            findPalindrome(s, i, i+1, start, len);
+        }
+        
+        return s.substr(start, len);
+    }
+};
+```
+和我想的一个思想，不过封装到一个函数里去了，原则上说，这个应该是没有dp快的，但是实测比dp快，也许是在这样的判断中失败偏多（终止更快），直接去迭代也没有重复判断，所以反而更快吧。
