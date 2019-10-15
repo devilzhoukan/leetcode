@@ -133,3 +133,28 @@ public:
 };
 ```
 和我想的一个思想，不过封装到一个函数里去了，原则上说，这个应该是没有dp快的，但是实测比dp快，也许是在这样的判断中失败偏多（终止更快），直接去迭代也没有重复判断，所以反而更快吧。
+python version
+```python
+class Solution:
+    def find_palindrome(self, s: str, left, right, start, temp_len):
+        N = len(s)
+        while left >= 0 and right < N and s[left] == s[right]:
+            left -= 1
+            right += 1
+        if right - left - 1 > temp_len:
+            start = left + 1
+            temp_len = right - left - 1
+        
+        return start, temp_len
+    
+    def longestPalindrome(self, s: str) -> str:
+        if not s: return s
+        N = len(s)
+        start = 0
+        temp_len = 0
+        for i in range(N):
+            start, temp_len = self.find_palindrome(s, i, i, start, temp_len)
+            start, temp_len = self.find_palindrome(s, i, i+1, start, temp_len)
+            
+        return s[start: start+temp_len]
+```
