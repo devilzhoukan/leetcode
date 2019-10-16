@@ -54,6 +54,6 @@ class Solution:
 ```
 
 **Tricks** here
-0. Kruskal's algorithm
-1. implement simple union-find using python set. the uf.setdefault(x, x) is important here
-2. if len({find(c) for c in uf})==1 to judge whether all unioned.
+1. Kruskal's algorithm
+2. implement simple union-find using python set. the uf.setdefault(x, x) is important here
+3. if len({find(c) for c in uf})==1 to judge whether all unioned.
