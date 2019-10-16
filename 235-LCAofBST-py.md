@@ -87,3 +87,30 @@ will get only one true from LCA.
 
 The disadvantage is that it only works for LCA of 2 node, when the number > 2, 
 the right solution is have many flag I think.
+
+Here is my own:
+```python
+class Solution:
+    def __init__(self):
+        self.ans = None
+
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        def helper(node):
+            if not node:
+                return False, False
+            left_p, left_q = helper(node.left)
+            right_p, right_q = helper(node.right)
+            mid_p = node == p
+            mid_q = node == q
+            
+            flag_p = mid_p or left_p or right_p
+            flag_q = mid_q or left_q or right_q
+            
+            if flag_p and flag_q and self.ans is None:
+                self.ans = node
+                
+            return flag_p, flag_q
+        
+        helper(root)
+        return self.ans
+```
