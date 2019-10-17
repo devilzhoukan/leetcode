@@ -68,5 +68,7 @@ class Solution:
         return cells
 ```
 
+Trick here: length of cycle is state[c] - N
+
 Time Complexity: O(2^N), where NN is the number of cells in the prison.
 Space Complexity: O(2^N * N).
