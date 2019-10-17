@@ -66,8 +66,8 @@ A subtree of a tree is the node which have at least 1 child plus all its descend
 
 ```
 Input:
-          20
-	   /   \
+         20
+       /   \
     12      18
   /  |  \   / \
 11   2   3 15  8
