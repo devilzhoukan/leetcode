@@ -57,3 +57,60 @@ Since the last turn of rotting must be pop all orange in stack but nowhere to sp
 that means the last turn always doesn't rot. So res starts from -1 to offset it.
 
 4. Return res
+
+### Code
+
+```python
+class Solution:
+    def orangesRotting(self, grid: List[List[int]]) -> int:
+        row = len(grid)
+        col = len(grid[0])
+        temp_list = []
+        res = -1
+        has_One = False
+        
+        
+        def rot(temp_list):
+            new_list = []
+            while temp_list:
+                i, j = temp_list.pop()
+                if i != 0:
+                    if grid[i-1][j] == 1:
+                        grid[i-1][j] = 2
+                        new_list.append((i-1, j))
+                if j != 0:
+                    if grid[i][j-1] == 1:
+                        grid[i][j-1] = 2
+                        new_list.append((i, j-1))
+                if i != row - 1:
+                    if grid[i+1][j] == 1:
+                        grid[i+1][j] = 2
+                        new_list.append((i+1, j))
+                if j != col - 1:
+                    if grid[i][j+1] == 1:
+                        grid[i][j+1] = 2
+                        new_list.append((i, j+1))
+            return new_list
+        
+        for i in range(row):
+            for j in range(col):              
+                if grid[i][j] == 2:
+                    temp_list.append((i, j))
+                if grid[i][j] == 1:
+                    has_One = True
+        
+        if not has_One:
+            return 0
+                    
+                    
+        while temp_list:
+            temp_list = rot(temp_list)
+            res += 1
+            
+        for i in range(row):
+            for j in range(col):
+                if grid[i][j] == 1:
+                    return -1
+                
+        return res
+···
