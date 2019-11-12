@@ -84,6 +84,8 @@ There are 3 nodes which have children in this tree:
 
 
 Python iteration solution: post-order traversal + store total sum and total number in TreeNode
+
+recursive way: remember: need to store the parameters outside
 ```python
 from collections import deque
 class TreeNode:
@@ -160,6 +162,7 @@ if __name__ == '__main__':
 
     ss = Solution()
     print(ss.findmaxavgsubtree2(n1).val)
+    print(ss.find_max_avg_sub(n1).val)
 ```
 time : O(N)  
 space : O(N)
