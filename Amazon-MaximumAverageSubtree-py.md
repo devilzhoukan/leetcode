@@ -124,29 +124,28 @@ class Solution:
                     max_avg_node = visit
         return max_avg_node
      
-     def find_max_avg_sub(self, root):
-        self.avg_max = 0
-        self.avg_node = None
-        def compute_avg(node):
-            if node is None:
-                return 0, 0
+        def find_max_avg_sub(self, root):
 
-            count = 1
-            curr = node.val
-            for i in node.children:
-                res = compute_avg(i)
-                count += res[1]
-                curr += res[0]
+            self.avg_max = 0
+            self.avg_node = None
+            def compute_avg(node):
+                if node is None:
+                    return 0, 0
+                count = 1
+                curr = node.val
+                for i in node.children:
+                    res = compute_avg(i)
+                    count += res[1]
+                    curr += res[0]
 
-            curr_avg = curr / count
-            if count > 1 and (curr_avg > self.avg_max):
-                self.avg_max = curr_avg
-                self.avg_node = node
-
-            print(curr, count, self.avg_max)
-            return curr, count
-        compute_avg(root)
-        return self.avg_node
+                curr_avg = curr / count
+                if count > 1 and (curr_avg > self.avg_max):
+                    self.avg_max = curr_avg
+                    self.avg_node = node
+                print(curr, count, self.avg_max)
+                return curr, count
+            compute_avg(root)
+            return self.avg_node
     
 
 if __name__ == '__main__':
